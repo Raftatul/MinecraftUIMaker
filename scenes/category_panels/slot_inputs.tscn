@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://d3rxit6u2c2bl"]
+
+[node name="SlotInputs" type="MarginContainer"]
+visible = false
+theme_override_constants/margin_right = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="SlotInputContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Add" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+text = "Add"
+
+[node name="Export" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+text = "Export Background"
+
+[node name="Copy" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+text = "Copy Java Code"

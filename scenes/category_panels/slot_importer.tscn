@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://nxk67ung5un6"]
+
+[ext_resource type="Script" path="res://scripts/slot_importer.gd" id="1_r2lrc"]
+[ext_resource type="PackedScene" uid="uid://blm448hubt8a7" path="res://scenes/imported_slot.tscn" id="2_sc37l"]
+
+[node name="SlotImporter" type="MarginContainer" node_paths=PackedStringArray("slot_container", "import_btn")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 0
+script = ExtResource("1_r2lrc")
+imported_slot_scene = "res://scenes/imported_slot.tscn"
+slot_container = NodePath("VBoxContainer/ScrollContainer/GridContainer")
+import_btn = NodePath("VBoxContainer/ImportSlot")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+
+[node name="ImportedSlot1" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("2_sc37l")]
+layout_mode = 2
+
+[node name="ImportSlot" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+focus_mode = 0
+text = "Import Slot (18x18 recommended)"

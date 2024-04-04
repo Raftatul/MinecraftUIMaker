@@ -1,6 +1,7 @@
 extends Node
 class_name Main
 
+static var instance: Main
 @export var texture: Texture
 
 @export var slots_container: Control
@@ -21,6 +22,8 @@ func _enter_tree():
 	add_button.pressed.connect(add_slot)
 	export_background_button.pressed.connect(export_background)
 	copy_java_button.pressed.connect(copy_java_code)
+	
+	instance = self
 
 func _ready():
 	var dir = DirAccess.open("user://")
@@ -44,6 +47,9 @@ func add_slot():
 	
 	var rect = TextureRect.new()
 	rect.texture = texture
+	rect.expand_mode = TextureRect.EXPAND_FIT_WIDTH
+	rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	rect.custom_minimum_size = Vector2(18, 18)
 	rect.reset_size()
 	slots_container.add_child(rect)
 	
