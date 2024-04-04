@@ -26,6 +26,11 @@ func _ready():
 	var dir = DirAccess.open("user://")
 	dir.make_dir("screenshots")
 
+func _input(event):
+	if event.is_action("take_screen"):
+		var img := get_viewport().get_texture().get_image()
+		img.save_png("user://screenshots/" + str(Time.get_time_dict_from_system().second) + ".png")
+
 func refresh_ui():
 	for i in range(slots_input.size()):
 		slots_input[i].set_index(i)
