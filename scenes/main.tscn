@@ -1,0 +1,109 @@
+[gd_scene load_steps=8 format=3 uid="uid://cxh4e70xlmove"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_771w8"]
+[ext_resource type="Texture2D" uid="uid://bpfdsd8flubfu" path="res://assets/slot.png" id="2_c47gk"]
+[ext_resource type="Theme" uid="uid://b1ibp8hukx5vs" path="res://main_theme.tres" id="3_cdk85"]
+[ext_resource type="Texture2D" uid="uid://twuju0vr56oo" path="res://assets/stone.png" id="3_wqgx7"]
+[ext_resource type="Texture2D" uid="uid://5p6gn3b6xs8" path="res://assets/background.tres" id="4_hthyi"]
+[ext_resource type="Texture2D" uid="uid://gmmii2b4bpjt" path="res://assets/square.png" id="5_tcrnp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jaucr"]
+texture = ExtResource("5_tcrnp")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("slots_container", "slot_inputs_container", "add_button", "export_background_button", "copy_java_button", "viewPort")]
+script = ExtResource("1_771w8")
+texture = ExtResource("2_c47gk")
+slots_container = NodePath("MarginContainer/HContainer/SubViewportContainer/SubViewport/Background")
+slot_inputs_container = NodePath("MarginContainer/HContainer/Utils/MarginContainer/VBoxContainer/ScrollContainer/SlotInputContainer")
+add_button = NodePath("MarginContainer/HContainer/Utils/MarginContainer/VBoxContainer/Add")
+export_background_button = NodePath("MarginContainer/HContainer/Utils/MarginContainer/VBoxContainer/Export")
+copy_java_button = NodePath("MarginContainer/HContainer/Utils/MarginContainer/VBoxContainer/Copy")
+viewPort = NodePath("MarginContainer/HContainer/SubViewportContainer/SubViewport")
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.541176, 0.541176, 0.541176, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_wqgx7")
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_cdk85")
+
+[node name="HContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MarginContainer/HContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SubViewport" type="SubViewport" parent="MarginContainer/HContainer/SubViewportContainer"]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(176, 166)
+render_target_update_mode = 4
+
+[node name="Background" type="TextureRect" parent="MarginContainer/HContainer/SubViewportContainer/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_hthyi")
+
+[node name="Utils" type="PanelContainer" parent="MarginContainer/HContainer"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_jaucr")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HContainer/Utils"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HContainer/Utils/MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HContainer/Utils/MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="SlotInputContainer" type="VBoxContainer" parent="MarginContainer/HContainer/Utils/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Add" type="Button" parent="MarginContainer/HContainer/Utils/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+text = "Add"
+
+[node name="Export" type="Button" parent="MarginContainer/HContainer/Utils/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+text = "Export Background"
+
+[node name="Copy" type="Button" parent="MarginContainer/HContainer/Utils/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+text = "Copy Java Code"

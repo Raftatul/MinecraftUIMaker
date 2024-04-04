@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx3ousmijod7g"]
+
+[ext_resource type="Script" path="res://scripts/slot.gd" id="1_unw8v"]
+[ext_resource type="Texture2D" uid="uid://bpfdsd8flubfu" path="res://assets/slot.png" id="3_7o7in"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tjdel"]
+texture = ExtResource("3_7o7in")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+
+[node name="HContainer" type="HBoxContainer" node_paths=PackedStringArray("index_label", "delete_button", "x_input", "y_input")]
+offset_right = 187.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+script = ExtResource("1_unw8v")
+index_label = NodePath("Index")
+delete_button = NodePath("DeleteButton")
+x_input = NodePath("X/x_input")
+y_input = NodePath("Y/y_input")
+
+[node name="Index" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+
+[node name="X" type="PanelContainer" parent="."]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_tjdel")
+
+[node name="x_input" type="LineEdit" parent="X"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "x"
+virtual_keyboard_type = 2
+flat = true
+caret_blink = true
+
+[node name="Y" type="PanelContainer" parent="."]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_tjdel")
+
+[node name="y_input" type="LineEdit" parent="Y"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "y"
+flat = true
+caret_blink = true
+
+[node name="DeleteButton" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+expand_mode = 2
+
+[node name="Label" type="Label" parent="DeleteButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 8
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
