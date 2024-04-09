@@ -2,6 +2,8 @@ extends Node
 class_name Main
 
 static var instance: Main
+static var save_path := "user://screenshots/"
+
 @export var texture: Texture
 
 @export var slots_container: Control
@@ -32,7 +34,7 @@ func _ready():
 func _input(event):
 	if event.is_action("take_screen"):
 		var img := get_viewport().get_texture().get_image()
-		img.save_png("user://screenshots/" + str(Time.get_time_dict_from_system().second) + ".png")
+		img.save_png(save_path + str(Time.get_time_dict_from_system().second) + ".png")
 
 func refresh_ui():
 	for i in range(slots_input.size()):
@@ -76,7 +78,7 @@ func export_background():
 		for y in img.get_size().y:
 			test.set_pixel(x, y, img.get_pixel(x, y))
 			
-	test.save_png("user://screenshots/background.png")
+	test.save_png(save_path + "background.png")
 
 func copy_java_code():
 	var output := ""
