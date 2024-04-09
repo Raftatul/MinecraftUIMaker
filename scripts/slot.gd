@@ -25,8 +25,8 @@ func _enter_tree():
 	x_input.focus_entered.connect(x_input.select_all)
 	y_input.focus_entered.connect(y_input.select_all)
 
-func set_index(index: int):
-	self.index = index
+func set_index(newIndex: int):
+	index = newIndex
 	index_label.text = str(index)
 
 func delete_button_gui_input(event: InputEvent):
