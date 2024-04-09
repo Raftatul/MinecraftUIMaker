@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://b3oay0xx47qbu" path="res://assets/brush.png" id="9_hs5aj"]
 [ext_resource type="Texture2D" uid="uid://b0tjwisrg0qbv" path="res://assets/mace.png" id="11_ntaer"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jaucr"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5atx0"]
 texture = ExtResource("5_tcrnp")
 texture_margin_left = 4.0
 texture_margin_top = 4.0
@@ -100,7 +100,7 @@ theme_override_constants/margin_bottom = 0
 [node name="CategoryPanels" type="PanelContainer" parent="Main/MarginContainer/HContainer/Control/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxTexture_jaucr")
+theme_override_styles/panel = SubResource("StyleBoxTexture_5atx0")
 
 [node name="SlotInputs" parent="Main/MarginContainer/HContainer/Control/MarginContainer/CategoryPanels" instance=ExtResource("7_7l7ya")]
 layout_mode = 2
